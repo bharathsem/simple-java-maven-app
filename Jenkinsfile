@@ -1,15 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('Test') {
+    stage('Compile') {
       steps {
-        bat 'mvn test'
+        bat 'mvn compile'
       }
     }
 
-    stage('Package') {
+    stage('validate') {
       steps {
-        bat 'mvn package'
+        bat 'mvn validate'
+      }
+    }
+
+    stage('Clean Package') {
+      steps {
+        bat 'mvn clean package'
       }
     }
 
